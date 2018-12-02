@@ -1,0 +1,56 @@
+<div class="container">
+<div class="row">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <button type="button" class="btn btn-outline-success" (click)="getDishes()">Wszystko</button>
+        <button type="button" class="btn btn-outline-success" (click)="getGlowne()" >Dania głowne</button>
+        <button type="button" class="btn btn-outline-success" (click)="getZupy()">Zupy</button>
+         <button type="button" class="btn btn-outline-success" (click)="getDesery()">Desery</button>
+        <button type="button" class="btn btn-outline-success" (click)="getNapoje()">Napoje</button>
+        <button type="button" class="btn btn-info" (click)="addDish()">Dodaj danie</button>
+
+
+        </div>
+    </div>
+  </nav>
+</div>
+  <div class="row">
+    <div class="col">
+      <table>
+        <tr>
+          <th>Nazwa</th>
+          <th>Cena</th>
+          <th>Kategoria</th>
+          <th>Details</th>
+          <ng-container *ngIf="isAdmin === true">
+          <th>Delete</th>
+          <th>Update</th>
+          </ng-container>
+        </tr>
+        <tr *ngFor="let dish of dishes">
+          <td>{{ dish.dishName }}</td>
+          <td>{{ dish.dishPrice }} zł</td>
+          <td>{{ dish.dishType.dishTypeName }}</td>
+          <td><button type="button" class="btn btn-outline-success" (click)="getDetails(dish)" >Details</button></td>
+          <ng-container *ngIf="isAdmin === true">
+          <td><button type="button" class="btn btn-outline-success" (click)="update(dish)">Update</button></td>
+          <td><a href ="/admin/menu"><button type="button" class="btn btn-outline-success" (click)="delete(dish)" >Delete</button></a></td>
+        </ng-container>
+        </tr>
+      </table>
+    </div>
+    <div class="col">
+      <div class="row">Zdjecie:</div>
+      <div class="row">Opis: {{ dish.description }} <br /></div>
+      <div class="row">
+        Skladniki: <br />
+        {{dish.ingredients}}
+
+      </div>
+      <div class="row">
+        <button type="button" class="btn btn-success">Dodaj do zamowienia</button>
+    </div>
+    </div>
+  </div>
+</div>

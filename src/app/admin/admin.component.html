@@ -1,0 +1,14 @@
+<h3>Panel administratora</h3>
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" [routerLink]="['/admin', 'menu']">Dishes</a>
+    </div>
+  </div>
+</nav>
+<ng-container *ngIf="id === 1">
+<app-menu [isAdmin]=true (eventDish)="setDish($event)"></app-menu>
+</ng-container>
+<ng-container *ngIf="id === 2">
+  <app-form-dish [dish]="dish" (backEmitter)="setChild($event)"></app-form-dish>
+</ng-container>
