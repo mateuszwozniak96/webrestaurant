@@ -1,16 +1,133 @@
-
+{{testHash}}
 <div class="login-page">
   <div class="form">
-    <form>
-      <input type="text" name="login" required class = "form-control" placeholder="login" [(ngModel)]="user.login"/>
-      <input type="password" name="password" placeholder="password" [(ngModel)]="user.password"/>
-      <input type="password" placeholder="Confirm password"/>
-      <input type="text" name="email" placeholder="email address" [(ngModel)]="user.email"/>
-      <input type="text" name="firstName" placeholder="First name" [(ngModel)]="user.firstName">
-      <input type="text" name="lastName" placeholder="Last name" [(ngModel)]="user.lastName">
-      <button type="button" class="btn btn-info" (click)="register()">Zarejestruj się</button>
-      <p class="message">Already registered? <a [routerLink]="['/login']">Sign In</a></p>
-</form>
+    <form [formGroup]="userForm" class="login-form">
+
+      <div class="form-group">
+        <input
+          type="text"
+          id="login"
+          formControlName="login"
+          class="form-control"
+          placeholder="login"
+          [(ngModel)]="user.login"
+        />
+        <div
+          class="alert alert-danger"
+          *ngIf="login.invalid && (login.touched || login.dirty)"
+        >
+          <div *ngIf="!!login.errors.required">Login is required</div>
+          <div *ngIf="!!login.errors.minlength">
+            Login should have at least 5 characters
+          </div>
+          <div *ngIf="!!login.errors.maxlength">
+            Login cannot hae more than 25 characters
+          </div>
+          <div *ngIf="!!login.errors.pattern">
+            You can use only characters and digits
+          </div>
+        <div *ngIf="!!login.errors.uniqueLogin" >
+              Login is already used </div>
+
+
+        </div>
+      </div>
+      <div class="form-group">
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          formControlName="password"
+          placeholder="password"
+          [(ngModel)]="user.password"
+        />
+        <div
+          class="alert alert-danger"
+          *ngIf="password.invalid && (password.touched || password.dirty)"
+        >
+          <div *ngIf="!!password.errors.required">Password is required</div>
+          <div *ngIf="!!password.errors.minlength">
+            Password should have at least 8 characters
+          </div>
+          <div *ngIf="!!password.errors.maxlength">
+            Password cannot hae more thatn 25 characters
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <input
+          type="password"
+          class="form-control"
+          id="confirmpassword"
+          formControlName="confirmpassword"
+          placeholder="confirm password"
+          [(ngModel)]="confirmPass"
+        />
+        <div
+          class="alert alert-danger"
+          *ngIf="
+            confirmpassword.invalid &&
+            (confirmpassword.touched || confirmpassword.dirty)
+          "
+        >
+          <div *ngIf="!!confirmpassword.errors.required">Confirmatiom  is required</div>
+          Passwords must match
+        </div>
+      </div>
+      <div class="form-group">
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          formControlName="email"
+          placeholder="email"
+          [(ngModel)] = "user.email"
+        />
+        <div
+          class="alert alert-danger"
+          *ngIf="email.invalid && (email.touched || email.dirty)"
+        >
+          <div *ngIf="email.errors['required']">Email is required</div>
+          <div *ngIf="email.errors['email']">Invalid email</div>
+          <div *ngIf="email.errors['uniqueEmail']">Email is used</div>
+          </div>
+        </div>
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control"
+          id="firstname"
+          formControlName="firstname"
+          placeholder="first name"
+          [(ngModel)] = "user.firstName"
+        />
+      </div>
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control"
+          id="lastname"
+          formControlName="lastname"
+          placeholder="last name"
+          [(ngModel)]="user.lastName"
+        />
+      </div>
+        <div *ngIf="userForm.valid; else nothing">
+            <a>
+                <button [routerLink]="['../register-summary']" (click)="register()" [disabled]="userForm.invalid">Zarejestruj się</button>
+            </a>
+        </div>
+        <ng-template #nothing>
+
+                <button (click)="register()" [disabled]="userForm.invalid">Zarejestruj się</button>
+
+        </ng-template>
+
+
+
+    </form>
+    <p class="message">
+      Already registered? <a [routerLink]="['/login']">Sign In</a>
+    </p>
   </div>
 </div>
-

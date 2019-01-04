@@ -1,0 +1,11 @@
+div.row {
+  margin: 10px;
+  padding-left:0;
+  margin-left:0;
+}
+.table-wrapper-scroll-y {
+  max-height: 600px;
+  overflow-y: auto;
+  max-width: 600px;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  }

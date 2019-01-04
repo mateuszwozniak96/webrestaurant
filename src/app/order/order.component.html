@@ -1,0 +1,63 @@
+<h3>Twoje zamowienie</h3>
+<div class="row">
+<div class="col">
+<div *ngIf="orderDetails.length === 0; else order">
+  <p>Twoje zamowienie jest puste</p>
+</div>
+<div>
+  <ng-template #order>
+      <p>Twoje zamowienie: </p>
+     <div class="table-wrapper-scroll-y">
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+        <th>Nazwa</th>
+        <th>Rodzaj</th>
+        <th>Cena</th>
+        <th>Ilosc</th>
+        <th>Usun</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let details of orderDetails" >
+          <td width="40%">{{details.dish.dishName}}</td>
+          <td>{{details.dish.dishType.dishTypeName}}</td>
+          <td>{{details.dish.dishPrice.toFixed(2)}}zł</td>
+          <td>{{details.dishAmount}}</td>
+          <td><button type="btn" class="btn btn-danger" (click)=delete(details)>Usun</button></td>
+      </tr>
+        </tbody>
+    </table>
+     </div>
+
+      <div>
+
+      </div>
+      <div>
+      </div>
+      <a [routerLink]="['../menu']"><button type="button" class="btn btn-success">Szukaj dalej</button></a>
+      <a [routerLink]="['../order-summary']"><button type="button" class="btn btn-success" (click)="addOrder()">Zamow</button></a>
+  </ng-template>
+</div>
+</div>
+<div class="col">
+  <h3>Historia zamowien</h3>
+  <div class="table-wrapper-scroll-y">
+  <table class="table">
+    <thead>
+     <tr>
+       <th>Numer zamowienia</th>
+       <th>Data Zamowienia</th>
+     </tr>
+    </thead>
+
+  <tbody>
+    <tr *ngFor="let order of userOrders">
+      <td>{{order.orderId}}</td>
+      <td>{{order.dateTime | date}}  {{order.dateTime | date: 'shortTime' }}</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>

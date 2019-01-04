@@ -1,8 +1,10 @@
+import { ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
-import { Dish } from '../entities';
+import { Dish, User } from '../entities';
 import { HttpService } from './../services/http.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-form-dish',
@@ -10,26 +12,45 @@ import { HttpService } from './../services/http.service';
   styleUrls: ['./form-dish.component.css']
 })
 export class FormDishComponent implements OnInit {
-  @Input()
   dish: Dish;
+  dishId: number;
 
-  @Output()
-  backEmitter = new EventEmitter<number>();
   dishTypes = ['', 'Danie główne', 'Zupa', 'Napój', 'Deser', 'Przystawka'];
 
-  constructor(private httpService: HttpService) { }
+  constructor(private httpService: HttpService, private route: ActivatedRoute, private userService: UserService) {
+    this.route.queryParams.subscribe(params => {
+     this.dishId = +params['dishId'];
+    });
+  }
   ngOnInit() {
- }
-
+    if (this.dishId !== 0) {
+      this.getDish(this.dishId);
+    } else {
+      this.dish = {
+        dishName: '',
+        dishPrice: 10,
+        ingredients: '',
+        description: '',
+        dishType: {
+          dishTypeId: 1,
+          dishTypeName: ''
+        },
+        dishImage: ''
+      };
+    }
+  }
  get diagnostic() { return JSON.stringify(this.dish); }
 
   updateDish() {
       this.httpService.addDish(this.dish).subscribe(dish => {
         console.log(dish);
       });
+      window.location.reload();
   }
 
-  back(id) {
-    this.backEmitter.emit(id);
+  getDish(dishId: number) {
+    this.httpService.getDish(1, dishId).subscribe(dish => {
+      this.dish = dish;
+    });
   }
 }

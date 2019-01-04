@@ -1,5 +1,7 @@
+import { UserService } from './../services/user.service';
+import { HttpService } from './../services/http.service';
 import { Component, OnInit } from '@angular/core';
-import { Dish } from '../entities';
+import { Dish, User } from '../entities';
 
 @Component({
   selector: 'app-admin',
@@ -9,17 +11,16 @@ import { Dish } from '../entities';
 export class AdminComponent implements OnInit {
   id: number;
   dish: Dish;
+  users: User[];
 
-  constructor() { }
+
+  constructor(private httpService: HttpService, private userService: UserService) { }
 
   ngOnInit() {
-    this.setChild(1);
+    this.getUsers();
   }
-  setChild(id: number) {
-    this.id = id;
-  }
-  setDish(dish: Dish): void {
-    this.dish = dish;
-    this.id = 2;
+
+  getUsers() {
+    this.httpService.getUsers().subscribe(users => this.users = users);
   }
 }

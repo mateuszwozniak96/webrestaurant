@@ -1,3 +1,70 @@
-<p>
-  reservation works!
-</p>
+<h3>Zarezerwuj stolik</h3>
+<div class="container">
+  <div class="row">
+    <div class="col-2">
+  <form >
+      <div class="form-group">
+        <label>Wybierz date</label>
+        <input type="text" placeholder="Wybierz datę" bsDatepicker
+               [(ngModel)]="myDate" name="myDate">
+                 </div>
+        <div *ngIf="user.userType.userTypeId != 4">
+      <div class="form-group">
+         <label>Wybierz godzine</label>
+        <timepicker name="myTime" [(ngModel)]="myTime"
+        [min]="minTime" [max]="maxTime" [showMinutes]="showMinutes"></timepicker>
+      </div>
+     <h4>Stolik:</h4>
+     <p>Id: {{reservation.board.boardId}}</p>
+     <p>Typ: {{reservation.board.boardType}}</p>
+    </div>
+  </form>
+  <div *ngIf="user.userType.userTypeId != 4">
+  <a [routerLink]="['../reserv-summary']"><button type="button" class="btn btn-success" (click)="reserv()" [disabled]="isReserved">Rezerwuj</button></a>
+    </div>
+</div>
+<div *ngIf="user.userType.userTypeId != 4">
+<div class="col">
+  <h4>Wybierz stolik</h4>
+      <table>
+          <thead>
+              <tr>
+                <th>Numer stolika</th>
+                <th>Wiekosc stolika</th>
+                <th>Rezerwuj</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let board of boards">
+                <td>{{board.boardId}}</td>
+                <td>{{board.boardType}}</td>
+                <td><button type="button" class="btn btn-success" (click)="setBoard(board)">Wybierz stolik</button></td>
+              </tr>
+          </tbody>
+      </table>
+</div>
+</div>
+<div class="col">
+    <div class="table-wrapper-scroll-y">
+    <table>
+      <thead>
+          <tr>
+            <th>Numer Stolika</th>
+            <th>Typ Stolika</th>
+            <th>Godzina rezerwacji</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let reserv of reservations">
+            <ng-container *ngIf="(reserv.dateTime | date)===(myDate | date)">
+               <td>{{reserv.board.boardId}}</td>
+               <td>{{reserv.board.boardType}}</td>
+               <td>{{reserv.dateTime | date}} {{reserv.dateTime | date: 'shortTime'}}</td>{{myDate | date}}
+              </ng-container>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+</div>

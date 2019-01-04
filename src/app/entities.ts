@@ -1,4 +1,4 @@
-export interface Board {
+export class Board {
   boardId?: number;
   boardType: string;
 }
@@ -9,40 +9,41 @@ export class Dish {
   ingredients: string;
   description: string;
   dishType: DishType;
+  dishImage?: string;
 }
-export interface DishType {
+export class DishType {
   dishTypeId?: number;
   dishTypeName: string;
 }
-export interface OrderDetail {
+export class OrderDetail {
   orderDetailId?: number;
   orderTable: OrderTable;
   dish: Dish;
   dishAmount: number;
 }
-export interface OrderTable {
+export class OrderTable {
   orderId?: number;
   value: number;
   user: User;
   status: Status;
   dateTime: Date;
 }
-export interface Reservation {
+export class Reservation {
   reservationId?: number;
   dateTime: Date;
   user: User;
   board: Board;
 }
-export interface Status {
+export class Status {
   statusId?: number;
   statusName: string;
 }
 
-export interface UserType {
+export class UserType {
   userTypeId?: number;
   userTypeName: string;
 }
-export interface User {
+export class User {
   userId?: number;
   login: string;
   password: string;
@@ -50,5 +51,6 @@ export interface User {
   firstName: string;
   lastName: string;
   userType: UserType;
+  isActive: number;
 }
 

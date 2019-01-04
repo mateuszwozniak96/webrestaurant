@@ -8,16 +8,19 @@
         <button type="button" class="btn btn-outline-success" (click)="getZupy()">Zupy</button>
          <button type="button" class="btn btn-outline-success" (click)="getDesery()">Desery</button>
         <button type="button" class="btn btn-outline-success" (click)="getNapoje()">Napoje</button>
-        <button type="button" class="btn btn-info" (click)="addDish()">Dodaj danie</button>
-
-
+        <ng-container *ngIf="isAdmin === true">
+      <a [routerLink]="['../form']" [queryParams]="{dishId: 0}"><button type="button" class="btn btn-success">Dodaj danie</button></a>
+    </ng-container>
+    <input  type="text" [(ngModel)]="searchDish" placeholder="search dish" ng-keydown="ngOnChang($event)" (change)="ngOnChanges()">
         </div>
     </div>
   </nav>
 </div>
   <div class="row">
     <div class="col">
-      <table>
+        <div class="table-wrapper-scroll-y">
+      <table class="table table-striped table-hover">
+        <thead>
         <tr>
           <th>Nazwa</th>
           <th>Cena</th>
@@ -28,29 +31,41 @@
           <th>Update</th>
           </ng-container>
         </tr>
+        </thead>
+        <tbody>
         <tr *ngFor="let dish of dishes">
-          <td>{{ dish.dishName }}</td>
-          <td>{{ dish.dishPrice }} zł</td>
+
+          <td width="40%">{{ dish.dishName }}</td>
+          <td>{{ dish.dishPrice.toFixed(2)}} zł</td>
           <td>{{ dish.dishType.dishTypeName }}</td>
-          <td><button type="button" class="btn btn-outline-success" (click)="getDetails(dish)" >Details</button></td>
+          <td (click)="getDetails(dish)"><button type="button" class="btn btn-outline-success" (click)="getDetails(dish)" >Details</button></td>
           <ng-container *ngIf="isAdmin === true">
-          <td><button type="button" class="btn btn-outline-success" (click)="update(dish)">Update</button></td>
-          <td><a href ="/admin/menu"><button type="button" class="btn btn-outline-success" (click)="delete(dish)" >Delete</button></a></td>
+          <td><a [routerLink]="['../form']" [queryParams]="{dishId: dish.dishId}"><button type="button" class="btn btn-outline-success">Update</button></a></td>
+          <td><a [routerLink]="['../menu']" [queryParams]="{isAdmin: true}"><button type="button" class="btn btn-outline-danger" (click)="delete(dish.dishId)" >Delete</button></a></td>
         </ng-container>
         </tr>
+        </tbody>
       </table>
+      </div>
     </div>
     <div class="col">
-      <div class="row">Zdjecie:</div>
+      <div class="row">
+          <img src={{dish.dishImage}} width="400px" height="300px"/>
+      </div>
       <div class="row">Opis: {{ dish.description }} <br /></div>
       <div class="row">
         Skladniki: <br />
         {{dish.ingredients}}
 
       </div>
+      <ng-container *ngIf="user.userType.userTypeId !== 4">
       <div class="row">
-        <button type="button" class="btn btn-success">Dodaj do zamowienia</button>
+        <label>Wprowadz ilosc:</label> <input type="text" [(ngModel)]="amount">
     </div>
+    <div class="row">
+        <a [routerLink]="['../order']"><button type="button" class="btn btn-success" (click)="addToOrder(dish,amount)">Dodaj do zamowienia</button></a>
+    </div>
+  </ng-container>
     </div>
   </div>
 </div>

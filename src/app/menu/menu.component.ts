@@ -1,33 +1,59 @@
+import { MenuOrderService } from './../services/menu-order.service';
+import { RouterModule, Routes, ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { Dish } from './../entities';
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Dish, User } from './../entities';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { HttpService } from '../services/http.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })
-export class MenuComponent implements OnInit {
+export class MenuComponent implements OnInit, OnChanges {
   dishes: Array<Dish> = [];
-  dish: Dish;
+  dish: Dish = new Dish();
   id  = 1;
-  @Input()
+  dishTypeId: number;
   isAdmin: boolean;
+  searchDish: string;
+  amount = 1;
+  user: User;
   @Output()
   eventDish = new EventEmitter<Dish>();
 
+  @Output()
+  addDishEmit = new EventEmitter<Dish>();
+  constructor( private httpService: HttpService, private route: ActivatedRoute, private menuOrderService: MenuOrderService,
+                    private userSerive: UserService) {
 
-  constructor(private httpService: HttpService) { }
+    }
 
-  dishTypeId: number;
+    ngOnInit() {
+      this.getDishes();
+      this.initDish();
+      this.route.queryParams.subscribe(params => {
+        if (params['isAdmin'] === 'true') {
+          this.isAdmin = true;
+        } else {
+          this.isAdmin = false;
+        }
+      });
+      this.searchDish = '';
+      this.user = this.userSerive.getUser();
+    }
+    ngOnChanges() {
+      if (this.searchDish !== '') {
+       this.httpService.getDishesByString(this.searchDish).subscribe(dishes => {
+         this.dishes = dishes;
+       });
+      }
+      console.log(this.searchDish);
+    }
 
   setAdmin(isAdmin) {
     this.isAdmin = isAdmin;
-  }
-
-  ngOnInit() {
-    this.getDishes();
   }
 
   getDishes() {
@@ -65,26 +91,18 @@ export class MenuComponent implements OnInit {
     this.dish = dish;
 
   }
-  update(dish: Dish) {
-    this.dish = dish;
-      this.eventDish.emit(this.dish);
-  }
-  addDish() {
-    this.dish = {
-      'dishName': ' ',
-      'dishPrice': 10,
-      'ingredients': ' ',
-      'description': ' ',
-      'dishType': {
-          'dishTypeId': 1,
-          'dishTypeName': ' '
-      }
-    };
-    this.eventDish.emit(this.dish);
-  }
 
-  delete(dish: Dish) {
+  delete(dish: number) {
     this.httpService.deleteDish(dish).subscribe();
+    window.location.reload();
+  }
+  addToOrder(dish: Dish, amount: number) {
+    this.menuOrderService.addOrderDetails(dish, amount);
+  }
+  initDish(){
+    this.dish.dishImage = 'https://d3iamf8ydd24h9.cloudfront.net/pictures/articles/2017/12/19735-v-900x556.jpg';
+    this.dish.description = 'Pyszne pierożki jak u konrada ';
+    this.dish.ingredients = 'Maka, Ziemniaki, Cebula, Twarog, Woda';
   }
 }
 

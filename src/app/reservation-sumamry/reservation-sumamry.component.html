@@ -1,0 +1,10 @@
+<div class="container">
+<h3>Dziekuje za zlozenie rezerwacji</h3>
+<h4>Podstumowanie: </h4>
+<p>Numer rezerwacji: {{reservation.reservationId}}</p>
+<p>Numer stolika: {{reservation.board.boardId}}</p>
+<p>Rodzaj stolika: {{reservation.board.boardType}}</p>
+<p>Data rezerwacji: {{reservation.dateTime | date: 'medium'}}</p>
+<p>Uzytkowniok: {{reservation.user.firstName}} {{reservation.user.lastName}}</p>
+<a [routerLink]="['../reserv']"><button class="button" type="btn btn-success">Kontynuuj</button></a>
+</div>

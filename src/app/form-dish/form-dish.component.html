@@ -26,13 +26,18 @@
         </select>
       </div>
 
-    <a href="/admin/menu"
-      ><button type="button" class="btn btn-info" (click)="updateDish()">
+      <div class="form-group">
+          <label for="dishImage">Dish Image</label>
+          <input type="text" [(ngModel)]="dish.dishImage" class="form-control" name="dishImage" />
+        </div>
+
+    <a [routerLink]="['../']"  [queryParams]="{isAdmin: true}"
+      ><button type="button" class="btn btn-outline-success" (click)="updateDish()">
         Update
       </button></a
     >
-    <a href="/admin/menu"
-      ><button type="button" class="btn btn-info" (click)="back(1)">
+    <a [routerLink]="['../']"  [queryParams]="{isAdmin: true}"
+      ><button type="button" class="btn btn-outline-success">
         Wroć
       </button></a
     >

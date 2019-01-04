@@ -1,5 +1,12 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
+.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948; /* green */
+}
+
+.ng-invalid:not(form)  {
+  border-left: 5px solid #a94442; /* red */
+}
 .login-page {
   width: 360px;
   padding: 8% 0 0;

@@ -1,6 +1,5 @@
 .table-wrapper-scroll-y {
   max-height: 600px;
   overflow-y: auto;
-  max-width: 600px;
   -ms-overflow-style: -ms-autohiding-scrollbar;
   }

@@ -1,0 +1,42 @@
+{{user.userId}}
+<div>
+  <form>
+    <div class="form-group">
+      <label for="login">Login</label>
+    <input type="text" [(ngModel)]="user.login" class="form-control" name="login" #login="ngModel" />
+      <div class="alert alert-danger" *ngIf="!login.valid">Login is requeired</div>
+  </div>
+  <div class="form-group">
+      <label for="email">Email</label>
+      <input type="text" [(ngModel)]="user.email" class="form-control" name="email" />
+  </div>
+
+    <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" [(ngModel)]="user.firstName" class="form-control" name="firstName" />
+      </div>
+
+    <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input type="text" [(ngModel)]="user.lastName" class="form-control" name="lastName" />
+      </div>
+
+    <div class="form-group">
+        <label for="userTypeId">User Type</label>
+        <select class="form-control" [(ngModel)]="user.userType.userTypeId" name="userTypeId">
+          <option *ngFor="let userType of userTypes" [value]="userTypes.indexOf(userType)">{{userType}}</option>
+        </select>
+      </div>
+
+    <a [routerLink]="['../users']"  [queryParams]="{isAdmin: true}"
+      ><button type="button" class="btn btn-info" (click)="updateUser()">
+        Update
+      </button></a
+    >
+    <a [routerLink]="['../users']"  [queryParams]="{isAdmin: true}"
+      ><button type="button" class="btn btn-info">
+        Wroć
+      </button></a
+    >
+  </form>
+</div>

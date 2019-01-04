@@ -3,12 +3,31 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-        <a class="nav-item nav-link" [routerLink]="['/login']">Logowanie<span class="sr-only">(current)</span></a>
+      <ng-container *ngIf="user.isActive === 0;">
+          <a class="nav-item nav-link" [routerLink]="['/login']">Logowanie<span class="sr-only">(current)</span></a>
+      </ng-container>
+
         <a class="nav-item nav-link" [routerLink]="['/menu']">Menu</a>
+        <ng-container *ngIf="user.userType.userTypeId != 4">
+            <a class="nav-item nav-link" [routerLink]="['/order']">Twoje zamowienie</a>
+        </ng-container>
         <a class="nav-item nav-link" [routerLink]="['/reserv']">Rezerwacje</a>
         <a class="nav-item nav-link" [routerLink]="['/about']">O nas</a>
+        <div *ngIf="user.userType.userTypeId === 3 || user.userType.userTypeId === 1">
+            <a class="nav-item nav-link" [routerLink]="['/orders']">Zamowienia</a>
+        </div>
+
+      <ng-container *ngIf="user.userType.userTypeId === 3">
+        <a class="nav-item nav-link" [routerLink]="['/admin'] " [queryParams]="{isAdmin: true}">Administracja</a>
+
+      </ng-container>
+        <ng-container *ngIf="user.isActive === 1">
+            <a class="nav-item nav-link" [routerLink]="['/login']" (click)="setActive(0)"> Wyloguj</a>
+        </ng-container>
+        <ng-container *ngIf="user.isActive === 0;">
         <a class="nav-item nav-link" [routerLink]="['/register']">Rejestracja</a>
-        <a class="nav-item nav-link" [routerLink]="['/admin','menu']">Administracja</a>
+      </ng-container>
+
     </div>
   </div>
 </nav>

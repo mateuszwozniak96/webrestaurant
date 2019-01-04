@@ -1,0 +1,47 @@
+<div class="container">
+  <h3>Zamowienia</h3>
+  <span><input type="checkbox" [(ngModel)]="hideOdebrane" name="odebrane">Ukryj Odebrane</span>
+  <span><input type="checkbox" [(ngModel)]="hideDetails">Ukryj Szczegoly</span>
+
+  <table class="table table-striped table-hover">
+    <thead>
+    <tr>
+      <th>Numer zamowienia</th>
+      <th>Data zamowienia</th>
+      <th>Szczegoly zamowienia</th>
+      <th>Zmien status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let order of orders" [(ngModel)]="tempOrder">
+      <ng-container *ngIf="!hideOdebrane ||( hideOdebrane && order.status.statusId != 3)">
+      <td width="7%">{{order.orderId}}</td>
+      <td>{{order.dateTime | date:'medium'}}</td>
+      <td>
+        <table class="table table.bordered">
+        <tr *ngFor="let orderDetail of orderDetails">
+            <ng-container *ngIf="orderDetail.orderTable.orderId === order.orderId && !hideDetails">
+                <td>{{orderDetail.dish.dishName}}</td>
+                <td> {{orderDetail.dishAmount}}</td>
+            </ng-container>
+        </tr>
+        <tr>
+          <td ></td>
+          <td><span>Łacznie: {{order.value}}zł</span></td>
+        </tr>
+
+        </table>
+      </td>
+      <td>
+        <select [(ngModel)]="order.status.statusId">
+          <option *ngFor="let status of orderStatus" [value]="orderStatus.indexOf(status)+1">{{status}}</option>
+        </select>
+      </td>
+      <td><button type="button" class="btn btn-success" (click)="updateOrder(order)">Zatwierdz</button></td>
+    </ng-container>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+
