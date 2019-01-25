@@ -1,4 +1,6 @@
+import { Dictionary } from './../entities';
 import { Component, OnInit } from '@angular/core';
+import { DictionaryService } from '../services/dictionary.service';
 
 @Component({
   selector: 'app-register-summary',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterSummaryComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dictionaryService: DictionaryService) { }
 
   ngOnInit() {
   }

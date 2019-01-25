@@ -1,3 +1,4 @@
+import { Dictionary } from './../entities';
 import { ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
@@ -5,6 +6,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Dish, User } from '../entities';
 import { HttpService } from './../services/http.service';
 import { UserService } from '../services/user.service';
+import { DictionaryService } from '../services/dictionary.service';
 
 @Component({
   selector: 'app-form-dish',
@@ -17,7 +19,8 @@ export class FormDishComponent implements OnInit {
 
   dishTypes = ['', 'Danie główne', 'Zupa', 'Napój', 'Deser', 'Przystawka'];
 
-  constructor(private httpService: HttpService, private route: ActivatedRoute, private userService: UserService) {
+  constructor(private httpService: HttpService, private route: ActivatedRoute, private userService: UserService,
+    public dictionaryService: DictionaryService) {
     this.route.queryParams.subscribe(params => {
      this.dishId = +params['dishId'];
     });

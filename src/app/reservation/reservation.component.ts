@@ -1,11 +1,12 @@
 import { UserService } from './../services/user.service';
 import { HttpService } from './../services/http.service';
-import { Reservation, Board, User } from './../entities';
+import { Reservation, Board, User, Dictionary } from './../entities';
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { Timestamp } from 'rxjs/internal/operators/timestamp';
 import { ReservSummaryReservService } from '../services/reserv-summary-reserv.service';
 import { ReservationSumamryComponent } from '../reservation-sumamry/reservation-sumamry.component';
 import { DatePipe } from '@angular/common';
+import { DictionaryService } from '../services/dictionary.service';
 
 @Component({
   selector: 'app-reservation',
@@ -27,7 +28,7 @@ export class ReservationComponent implements OnInit, OnChanges {
   user: User;
 
   constructor(private httpService: HttpService, private reservService: ReservSummaryReservService,
-            public datePipe: DatePipe, private userService: UserService) {
+            public datePipe: DatePipe, private userService: UserService, public dictionaryService: DictionaryService) {
 
     this.minTime.setHours(11);
     this.maxTime.setHours(24);

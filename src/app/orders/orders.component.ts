@@ -1,7 +1,8 @@
 import { UserService } from './../services/user.service';
-import { OrderTable, OrderDetail } from './../entities';
+import { OrderTable, OrderDetail, Dictionary } from './../entities';
 import { HttpService } from './../services/http.service';
 import { Component, OnInit, OnChanges } from '@angular/core';
+import { DictionaryService } from '../services/dictionary.service';
 
 @Component({
   selector: 'app-orders',
@@ -20,7 +21,8 @@ export class OrdersComponent implements OnInit {
 
 
  orderStatus = ['zlozone', 'Gotowe do odbioru', 'Odebrane'];
-  constructor(private httpService: HttpService, private userService: UserService) {
+  constructor(private httpService: HttpService, private userService: UserService,
+    public dictionaryService: DictionaryService) {
       this.httpService.getOrders().subscribe(orders => {
         this.orders = orders;
       });

@@ -1,10 +1,11 @@
 import { MenuOrderService } from './../services/menu-order.service';
 import { RouterModule, Routes, ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { Dish, User } from './../entities';
+import { Dish, User, Dictionary } from './../entities';
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { HttpService } from '../services/http.service';
 import { UserService } from '../services/user.service';
+import { DictionaryService } from '../services/dictionary.service';
 
 @Component({
   selector: 'app-menu',
@@ -26,7 +27,7 @@ export class MenuComponent implements OnInit, OnChanges {
   @Output()
   addDishEmit = new EventEmitter<Dish>();
   constructor( private httpService: HttpService, private route: ActivatedRoute, private menuOrderService: MenuOrderService,
-                    private userSerive: UserService) {
+                    private userSerive: UserService, public dictionaryService: DictionaryService) {
 
     }
 

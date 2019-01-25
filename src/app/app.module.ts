@@ -1,3 +1,4 @@
+import { DictionaryService } from './services/dictionary.service';
 import { MenuOrderService } from './services/menu-order.service';
 import { HttpService } from './services/http.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -63,7 +64,7 @@ import {MatButtonModule} from '@angular/material/button';
 
   ],
   providers: [HttpService, MenuOrderService, ReservSummaryReservService, DatePipe, UserService, AppComponent,
-              UserService, WheatherService],
+              UserService, WheatherService, DictionaryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

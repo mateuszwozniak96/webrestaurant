@@ -1,3 +1,4 @@
+import { Dictionary } from './../entities';
 import { AppComponent } from './../app.component';
 import { HttpService } from './../services/http.service';
 import { Component, OnInit } from '@angular/core';
@@ -5,6 +6,7 @@ import { UserService } from '../services/user.service';
 import { User } from '../entities';
 import { Router } from '@angular/router';
 import { sha256, sha224 } from 'js-sha256';
+import { DictionaryService } from '../services/dictionary.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +19,7 @@ export class LoginComponent implements OnInit {
   password: string;
   incorrect = false;
   constructor(private httpService: HttpService, private userService: UserService, private router: Router,
-                  private appComponent: AppComponent) { }
+                  private appComponent: AppComponent, public dictionaryService: DictionaryService) { }
 
   ngOnInit() {
     this.httpService.getUsers().subscribe(users => {

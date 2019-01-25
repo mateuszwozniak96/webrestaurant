@@ -3,8 +3,8 @@
   width:  100vw; /* For 100% screen width */
   background-color: hsl(0, 0%, 19%);
   color:burlywood ;
-  padding-bottom: 0;
-  margin-bottom: 0;
+  padding: 0;
+  margin: 0;
 }
 .container-light-theme {
   height: 100vh; /* For 100% screen height */
@@ -27,7 +27,7 @@
   border-color:  hsl(0, 0%, 19%);
   background-color: burlywood;
 }
-.container-black-theme button.btn-outline-success:active {
+.container-black-theme button.btn-outline-success:focus {
   color:  hsl(0, 0%, 19%);
   border-color:  hsl(0, 0%, 19%);
   background-color: burlywood;

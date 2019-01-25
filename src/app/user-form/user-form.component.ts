@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { HttpService } from './../services/http.service';
 import { Component, OnInit } from '@angular/core';
 import { User } from '../entities';
+import { DictionaryService } from '../services/dictionary.service';
 
 @Component({
   selector: 'app-user-form',
@@ -16,7 +17,8 @@ export class UserFormComponent implements OnInit {
 
   userTypes = ['', 'Pracownik', 'Uzytkownik zalogowany'];
 
-  constructor(private httpService: HttpService, private route: ActivatedRoute, private userService: UserService) {
+  constructor(private httpService: HttpService, private route: ActivatedRoute, private userService: UserService,
+    public dictionaryService: DictionaryService) {
     this.route.queryParams.subscribe(params => {
       this.userId = +params['userId'];
      });

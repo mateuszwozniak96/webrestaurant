@@ -1,44 +1,44 @@
-<h3>Zarezerwuj stolik</h3>
+<h3>{{dictionaryService.dictionary.reservTable}}</h3>
 <div class="container">
   <div class="row">
     <div class="col-2">
   <form >
       <div class="form-group">
-        <label>Wybierz date</label>
+        <label>{{dictionaryService.dictionary.pickDate}}</label>
         <input type="text" placeholder="Wybierz datę" bsDatepicker
                [(ngModel)]="myDate" name="myDate">
                  </div>
         <div *ngIf="user.userType.userTypeId != 4">
       <div class="form-group">
-         <label>Wybierz godzine</label>
+         <label>{{dictionaryService.dictionary.pickHour}}</label>
         <timepicker name="myTime" [(ngModel)]="myTime"
         [min]="minTime" [max]="maxTime" [showMinutes]="showMinutes"></timepicker>
       </div>
-     <h4>Stolik:</h4>
-     <p>Id: {{reservation.board.boardId}}</p>
-     <p>Typ: {{reservation.board.boardType}}</p>
+     <h4>{{dictionaryService.dictionary.table}}:</h4>
+     <p>{{dictionaryService.dictionary.tableNumber}}: {{reservation.board.boardId}}</p>
+     <p>{{dictionaryService.dictionary.tableType}}: {{reservation.board.boardType}}</p>
     </div>
   </form>
   <div *ngIf="user.userType.userTypeId != 4">
-  <a [routerLink]="['../reserv-summary']"><button type="button" class="btn btn-success" (click)="reserv()" [disabled]="isReserved">Rezerwuj</button></a>
+  <a [routerLink]="['../reserv-summary']"><button type="button" class="btn btn-success" (click)="reserv()" [disabled]="isReserved">{{dictionaryService.dictionary.reserv}}</button></a>
     </div>
 </div>
 <div *ngIf="user.userType.userTypeId != 4">
 <div class="col">
-  <h4>Wybierz stolik</h4>
+  <h4>{{dictionaryService.dictionary.pickTable}}</h4>
       <table>
           <thead>
               <tr>
-                <th>Numer stolika</th>
-                <th>Wiekosc stolika</th>
-                <th>Rezerwuj</th>
+                <th>{{dictionaryService.dictionary.tableNumber}}</th>
+                <th>{{dictionaryService.dictionary.tableSize}}/th>
+                <th>{{dictionaryService.dictionary.reserv}}</th>
               </tr>
           </thead>
           <tbody>
               <tr *ngFor="let board of boards">
                 <td>{{board.boardId}}</td>
                 <td>{{board.boardType}}</td>
-                <td><button type="button" class="btn btn-success" (click)="setBoard(board)">Wybierz stolik</button></td>
+                <td><button type="button" class="btn btn-success" (click)="setBoard(board)">{{dictionaryService.dictionary.pickTable}}</button></td>
               </tr>
           </tbody>
       </table>
@@ -49,9 +49,9 @@
     <table>
       <thead>
           <tr>
-            <th>Numer Stolika</th>
-            <th>Typ Stolika</th>
-            <th>Godzina rezerwacji</th>
+            <th>{{dictionaryService.dictionary.tableNumber}}</th>
+            <th>{{dictionaryService.dictionary.tableType}}</th>
+            <th>{{dictionaryService.dictionary.reservationHour}}</th>
           </tr>
       </thead>
       <tbody>

@@ -1,14 +1,15 @@
 <div class="login-page">
   <div class="form">
     <form class="login-form">
-      <input type="text" placeholder="username" [(ngModel)]="userName" name="userName"/>
-      <input type="password" placeholder="password" [(ngModel)]="password" name="userName"/>
-      <button (click)="login()">login</button>
+      <input type="text" placeholder="{{dictionaryService.dictionary.login}}" [(ngModel)]="userName" name="userName"/>
+      <input type="password" placeholder="{{dictionaryService.dictionary.password}}" [(ngModel)]="password" name="userName"/>
+      <button (click)="login()">Login</button>
       <div *ngIf="incorrect">
         <p style="color:red">Nieprawidłowy login lub hasło</p>
       </div>
 
-      <p class="message">Not registered? <a [routerLink]="['../register']">Create an account</a></p>
+      <p class="message">No account?
+         <a [routerLink]="['../register']">{{dictionaryService.dictionary.createAccount}}</a></p>
     </form>
      </div>
 </div>

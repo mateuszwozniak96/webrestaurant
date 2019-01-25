@@ -4,8 +4,9 @@ import { MenuOrderService } from './services/menu-order.service';
 import { HttpService } from './services/http.service';
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { UserService } from './services/user.service';
-import { User } from './entities';
+import { User, Dictionary } from './entities';
 import { when } from 'q';
+import { DictionaryService } from './services/dictionary.service';
 
 @Component({
   selector: 'app-root',
@@ -20,11 +21,12 @@ export class AppComponent implements OnInit {
   wheatherTemp;
   wheatherType;
   otherTheme = false;
+  otherLang = false;
   bgColor = 'darkkhaki';
   themeClass = 'container-black-theme';
   constructor(private httpService: HttpService, private menuOrderServie: MenuOrderService,
     private reservService: ReservSummaryReservService, public userService: UserService,
-              public wheatherService: WheatherService) {}
+              public wheatherService: WheatherService , public dictionaryService: DictionaryService) {}
 
     ngOnInit() {
       this.user = this.userService.getUser();

@@ -1,4 +1,3 @@
-{{testHash}}
 <div class="login-page">
   <div class="form">
     <form [formGroup]="userForm" class="login-form">
@@ -38,7 +37,7 @@
           class="form-control"
           id="password"
           formControlName="password"
-          placeholder="password"
+          placeholder="{{dictionaryService.dictionary.password}}"
           [(ngModel)]="user.password"
         />
         <div
@@ -60,7 +59,7 @@
           class="form-control"
           id="confirmpassword"
           formControlName="confirmpassword"
-          placeholder="confirm password"
+          placeholder="{{dictionaryService.dictionary.confirmPassword}}"
           [(ngModel)]="confirmPass"
         />
         <div
@@ -98,7 +97,7 @@
           class="form-control"
           id="firstname"
           formControlName="firstname"
-          placeholder="first name"
+          placeholder="{{dictionaryService.dictionary.firstName}}"
           [(ngModel)] = "user.firstName"
         />
       </div>
@@ -108,23 +107,23 @@
           class="form-control"
           id="lastname"
           formControlName="lastname"
-          placeholder="last name"
+          placeholder="{{dictionaryService.dictionary.lastName}}"
           [(ngModel)]="user.lastName"
         />
       </div>
         <div *ngIf="userForm.valid; else nothing">
             <a>
-                <button [routerLink]="['../register-summary']" (click)="register()" [disabled]="userForm.invalid">Zarejestruj się</button>
+                <button [routerLink]="['../register-summary']" (click)="register()" [disabled]="userForm.invalid">{{dictionaryService.dictionary.register}}</button>
             </a>
         </div>
         <ng-template #nothing>
 
-                <button (click)="register()" [disabled]="userForm.invalid">Zarejestruj się</button>
+                <button (click)="register()" [disabled]="userForm.invalid">{{dictionaryService.dictionary.register}}</button>
 
         </ng-template>
     </form>
     <p class="message">
-      Already registered? <a [routerLink]="['/login']">Sign In</a>
+        {{dictionaryService.dictionary.alreadyRegister}}? <a [routerLink]="['/login']">{{dictionaryService.dictionary.login}}</a>
     </p>
   </div>
 </div>

@@ -1,9 +1,10 @@
-import { OrderDetail, OrderTable } from './../entities';
+import { OrderDetail, OrderTable, Dictionary } from './../entities';
 import { HttpService } from './../services/http.service';
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { Dish } from '../entities';
 import { MenuOrderService } from '../services/menu-order.service';
 import { UserService } from '../services/user.service';
+import { DictionaryService } from '../services/dictionary.service';
 
 @Component({
   selector: 'app-order-summary',
@@ -14,7 +15,7 @@ export class OrderSummaryComponent implements OnInit {
   orderDetails: OrderDetail[] = [];
   order: OrderTable;
   constructor(private httpService: HttpService, private menuOrderService: MenuOrderService,
-            private userServie: UserService) { }
+            private userServie: UserService, public dictionaryService: DictionaryService) { }
 
   ngOnInit() {
     this.orderDetails = this.menuOrderService.getOrderDetails();

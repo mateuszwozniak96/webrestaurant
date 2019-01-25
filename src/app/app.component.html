@@ -3,41 +3,42 @@
 
 <div class="container">
 
-<h1>Welcome to our Resturant</h1>
+<h1>{{dictionaryService.dictionary.welcome}}</h1>
 <nav class="navbar navbar-expand-lg navbar-light">
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
       <ng-container *ngIf="user.isActive === 0;">
-          <a class="nav-item nav-link" [routerLink]="['/login']">Logowanie<span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link" [routerLink]="['/login']">{{dictionaryService.dictionary.login}}<span class="sr-only">(current)</span></a>
       </ng-container>
 
         <a class="nav-item nav-link" [routerLink]="['/menu']">Menu</a>
         <ng-container *ngIf="user.userType.userTypeId != 4">
-            <a class="nav-item nav-link" [routerLink]="['/order']">Twoje zamowienie</a>
+            <a class="nav-item nav-link" [routerLink]="['/order']">{{dictionaryService.dictionary.yourOrder}}</a>
         </ng-container>
-        <a class="nav-item nav-link" [routerLink]="['/reserv']">Rezerwacje</a>
-        <a class="nav-item nav-link" [routerLink]="['/about']">O nas</a>
+        <a class="nav-item nav-link" [routerLink]="['/reserv']">{{dictionaryService.dictionary.reservation}}</a>
+        <a class="nav-item nav-link" [routerLink]="['/about']">{{dictionaryService.dictionary.about}}</a>
         <div *ngIf="user.userType.userTypeId === 3 || user.userType.userTypeId === 1">
-            <a class="nav-item nav-link" [routerLink]="['/orders']">Zamowienia</a>
+            <a class="nav-item nav-link" [routerLink]="['/orders']">{{dictionaryService.dictionary.orders}}</a>
         </div>
 
 
       <ng-container *ngIf="user.userType.userTypeId === 3">
-        <a class="nav-item nav-link" [routerLink]="['/admin'] " [queryParams]="{isAdmin: true}">Administracja</a>
+        <a class="nav-item nav-link" [routerLink]="['/admin'] " [queryParams]="{isAdmin: true}">{{dictionaryService.dictionary.admin}}</a>
 
       </ng-container>
         <ng-container *ngIf="user.isActive === 1">
-            <a class="nav-item nav-link" [routerLink]="['/login']" (click)="setActive(0)"> Wyloguj</a>
+            <a class="nav-item nav-link" [routerLink]="['/login']" (click)="setActive(0)">{{dictionaryService.dictionary.logout}}</a>
         </ng-container>
         <ng-container *ngIf="user.isActive === 0;">
-        <a class="nav-item nav-link" [routerLink]="['/register']">Rejestracja</a>
+        <a class="nav-item nav-link" [routerLink]="['/register']">{{dictionaryService.dictionary.register}}</a>
       </ng-container>
 
     </div>
   </div>
   <div>
   <p>{{wheatherCity}} {{wheatherTemp}}C {{wheatherType}}</p>
-  <button type="button" class="btn btn-" (click)="changeTheme()">Change Theme</button>
+  <button type="button" class="btn btn-outline-success" (click)="changeTheme()">{{dictionaryService.dictionary.changeTheme}}</button>
+  <button type="button" class="btn btn-outline-success" (click)="dictionaryService.changeLang()">{{dictionaryService.dictionary.changeLang}}</button>
   </div>
 </nav>
   <router-outlet></router-outlet>

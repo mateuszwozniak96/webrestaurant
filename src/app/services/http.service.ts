@@ -1,4 +1,4 @@
-import { OrderTable, Reservation, OrderDetail, Board } from './../entities';
+import { OrderTable, Reservation, OrderDetail, Board, Dictionary } from './../entities';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -113,6 +113,12 @@ getUserByLogin(login: string): Observable<Array<User>> {
   }
   getOrdersByuserId(userId: number): Observable<Array<OrderTable>> {
     return this.http.get<Array<OrderTable>>('http://localhost:8080/orders/' + userId);
+  }
+  getDictionaryPol(): Observable<Dictionary> {
+    return this.http.get<Dictionary>('http://localhost:8080/pol');
+  }
+  getDictionaryEng(): Observable<Dictionary> {
+    return this.http.get<Dictionary>('http://localhost:8080/eng');
   }
 
 }

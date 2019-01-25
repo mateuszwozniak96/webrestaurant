@@ -1,12 +1,13 @@
 import { FormsModule, FormBuilder, FormGroup, Validators, AbstractControl, AsyncValidatorFn, ValidationErrors } from '@angular/forms';
 import { HttpService } from './../services/http.service';
 import { Component, OnInit } from '@angular/core';
-import { User } from '../entities';
+import { User, Dictionary } from '../entities';
 import { UserService } from '../services/user.service';
 import { UsersService } from '../services/users.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { sha256, sha224 } from 'js-sha256';
+import { DictionaryService } from '../services/dictionary.service';
 
 
 
@@ -23,7 +24,7 @@ export class RegisterComponent implements OnInit {
   users: User[] = [];
   testHash: string;
   constructor(private httpService: HttpService, private fb: FormBuilder, private userService: UserService,
-                       private usersService: UsersService) {
+                       private usersService: UsersService, public dictionaryService: DictionaryService) {
    }
 
 
