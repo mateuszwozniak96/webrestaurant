@@ -1,6 +1,10 @@
+
+<div [ngClass]="themeClass">
+
 <div class="container">
+
 <h1>Welcome to our Resturant</h1>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light">
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
       <ng-container *ngIf="user.isActive === 0;">
@@ -17,6 +21,7 @@
             <a class="nav-item nav-link" [routerLink]="['/orders']">Zamowienia</a>
         </div>
 
+
       <ng-container *ngIf="user.userType.userTypeId === 3">
         <a class="nav-item nav-link" [routerLink]="['/admin'] " [queryParams]="{isAdmin: true}">Administracja</a>
 
@@ -30,6 +35,11 @@
 
     </div>
   </div>
+  <div>
+  <p>{{wheatherCity}} {{wheatherTemp}}C {{wheatherType}}</p>
+  <button type="button" class="btn btn-" (click)="changeTheme()">Change Theme</button>
+  </div>
 </nav>
   <router-outlet></router-outlet>
+</div>
 </div>

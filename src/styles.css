@@ -1,1 +1,76 @@
-/* You can add global styles to this file, and also import other style files */
+.container-black-theme{
+  height: 100vh; /* For 100% screen height */
+  width:  100vw; /* For 100% screen width */
+  background-color: hsl(0, 0%, 19%);
+  color:burlywood ;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+.container-light-theme {
+  height: 100vh; /* For 100% screen height */
+  width:  100vw; /* For 100% screen width */
+  background-color: burlywood;
+  color:   hsl(0, 0%, 19%);
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.container-black-theme .navbar-light .navbar-nav .nav-link {
+  color: burlywood !important;
+}
+.container-black-theme button.btn-outline-success {
+  color: burlywood;
+  border-color: burlywood;
+}
+.container-black-theme button.btn-outline-success:hover {
+  color:  hsl(0, 0%, 19%);
+  border-color:  hsl(0, 0%, 19%);
+  background-color: burlywood;
+}
+.container-black-theme button.btn-outline-success:active {
+  color:  hsl(0, 0%, 19%);
+  border-color:  hsl(0, 0%, 19%);
+  background-color: burlywood;
+}
+.container-light-theme .navbar-light .navbar-nav .nav-link {
+  color:  hsl(0, 0%, 19%) !important;
+}
+.container-light-theme button.btn-outline-success {
+  color:  hsl(0, 0%, 19%);
+  border-color:  hsl(0, 0%, 19%);
+}
+.container-light-theme button.btn-outline-success:hover {
+  color: burlywood;
+  border-color: burlywood;
+  background-color:  hsl(0, 0%, 19%);
+}
+
+
+.container-black-theme button.btn-success {
+  color: burlywood;
+  border-color: burlywood;
+  background-color:  hsl(0, 0%, 19%);
+}
+.container-black-theme button.btn-success:hover {
+  color:  hsl(0, 0%, 19%);
+  border-color:  hsl(0, 0%, 19%);
+  background-color: burlywood;
+}
+.container-black-theme button.btn-success:active {
+  color:  hsl(0, 0%, 19%);
+  border-color:  hsl(0, 0%, 19%);
+  background-color: burlywood;
+}
+
+.container-light-theme button.btn-success {
+  color:  hsl(0, 0%, 19%);
+  border-color:  hsl(0, 0%, 19%);
+  background-color: burlywood;
+}
+.container-light-theme button.btn-success:hover {
+  color: burlywood;
+  border-color: burlywood;
+  background-color:  hsl(0, 0%, 19%);
+}
+
+

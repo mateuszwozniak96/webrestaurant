@@ -99,10 +99,18 @@ export class MenuComponent implements OnInit, OnChanges {
   addToOrder(dish: Dish, amount: number) {
     this.menuOrderService.addOrderDetails(dish, amount);
   }
-  initDish(){
+  initDish() {
     this.dish.dishImage = 'https://d3iamf8ydd24h9.cloudfront.net/pictures/articles/2017/12/19735-v-900x556.jpg';
     this.dish.description = 'Pyszne pierożki jak u konrada ';
     this.dish.ingredients = 'Maka, Ziemniaki, Cebula, Twarog, Woda';
   }
+  incAmount() {
+      this.amount = this.amount + 1;
+  }
+  decAmount() {
+    if (this.amount > 0) {
+      this.amount = this.amount - 1;
+  }
+}
 }
 

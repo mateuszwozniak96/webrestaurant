@@ -1,6 +1,13 @@
 .table-wrapper-scroll-y {
   max-height: 600px;
   overflow-y: auto;
-  max-width: 600px;
+  max-width: 100%;
   -ms-overflow-style: -ms-autohiding-scrollbar;
   }
+  .table-wrapper-scroll-y2 {
+    max-height: 200px;
+    overflow-y: auto;
+    max-width: 100%;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    }
+

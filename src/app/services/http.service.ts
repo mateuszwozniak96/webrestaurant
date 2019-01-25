@@ -9,7 +9,7 @@ import { Dish, User } from '../entities';
 })
 export class HttpService {
 
-  constructor(private http: HttpClient) { }
+  constructor(public http: HttpClient) { }
   id: number;
   users: string [];
   anything: any;

@@ -25,6 +25,10 @@ import { ReservSummaryReservService } from './services/reserv-summary-reserv.ser
 import { DatePipe } from '@angular/common';
 import { UserService } from './services/user.service';
 import { RegisterSummaryComponent } from './register-summary/register-summary.component';
+import { WheatherService } from './services/wheather.service';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -51,11 +55,15 @@ import { RegisterSummaryComponent } from './register-summary/register-summary.co
     HttpClientModule,
     ReactiveFormsModule,
     BsDatepickerModule.forRoot(),
-    TimepickerModule.forRoot()
+    TimepickerModule.forRoot(),
+    BrowserAnimationsModule,
+    MatCheckboxModule,
+    MatButtonModule
+
 
   ],
   providers: [HttpService, MenuOrderService, ReservSummaryReservService, DatePipe, UserService, AppComponent,
-              UserService],
+              UserService, WheatherService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

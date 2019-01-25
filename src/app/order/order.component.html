@@ -24,7 +24,7 @@
           <td>{{details.dish.dishType.dishTypeName}}</td>
           <td>{{details.dish.dishPrice.toFixed(2)}}zł</td>
           <td>{{details.dishAmount}}</td>
-          <td><button type="btn" class="btn btn-danger" (click)=delete(details)>Usun</button></td>
+          <td> <input type="image" src="assets/images/deletePosition.png" width="35px" height="35px" (click)="delete(details)"></td>
       </tr>
         </tbody>
     </table>
