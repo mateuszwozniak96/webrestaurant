@@ -111,16 +111,12 @@
           [(ngModel)]="user.lastName"
         />
       </div>
-        <div *ngIf="userForm.valid; else nothing">
+
             <a>
-                <button [routerLink]="['../register-summary']" (click)="register()" [disabled]="userForm.invalid">{{dictionaryService.dictionary.register}}</button>
+                <button type="button" class="btn-success" [routerLink]="['../register-summary']" (click)="register()" [disabled]="userForm.invalid">{{dictionaryService.dictionary.register}}</button>
             </a>
-        </div>
-        <ng-template #nothing>
 
-                <button (click)="register()" [disabled]="userForm.invalid">{{dictionaryService.dictionary.register}}</button>
 
-        </ng-template>
     </form>
     <p class="message">
         {{dictionaryService.dictionary.alreadyRegister}}? <a [routerLink]="['/login']">{{dictionaryService.dictionary.login}}</a>

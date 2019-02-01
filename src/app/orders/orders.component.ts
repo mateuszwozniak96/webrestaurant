@@ -42,5 +42,8 @@ export class OrdersComponent implements OnInit {
   getDetails() {
 
   }
+  deleteOrder(orderId: number) {
+    this.httpService.deleteOrder(orderId).subscribe();
+  }
 
 }

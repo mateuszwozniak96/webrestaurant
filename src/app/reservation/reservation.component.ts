@@ -27,8 +27,8 @@ export class ReservationComponent implements OnInit, OnChanges {
   dateToCompare2: string;
   user: User;
 
-  constructor(private httpService: HttpService, private reservService: ReservSummaryReservService,
-            public datePipe: DatePipe, private userService: UserService, public dictionaryService: DictionaryService) {
+  constructor(public httpService: HttpService, private reservService: ReservSummaryReservService,
+            public datePipe: DatePipe, public userService: UserService, public dictionaryService: DictionaryService) {
 
     this.minTime.setHours(11);
     this.maxTime.setHours(24);
@@ -88,6 +88,9 @@ export class ReservationComponent implements OnInit, OnChanges {
           'boardType': 'maly'
       }
   };
+  }
+  deleteReservation(reservationId: number) {
+    this.httpService.deleteReservation(reservationId).subscribe();
   }
 
 }

@@ -12,7 +12,7 @@
         <ng-container *ngIf="isAdmin === true">
       <a [routerLink]="['../form']" [queryParams]="{dishId: 0}"><button type="button" class="btn btn-success">Dodaj danie</button></a>
     </ng-container>
-    <input  type="text" [(ngModel)]="searchDish" placeholder="search dish" ng-keydown="ngOnChang($event)" (change)="ngOnChanges()">
+    <input  type="text" [(ngModel)]="searchDish" placeholder="{{dictionaryService.dictionary.serachDish}}" ng-keydown="ngOnChang($event)" (change)="ngOnChanges()">
         </div>
     </div>
   </nav>
@@ -42,8 +42,8 @@
           <td>{{ dish.dishType.dishTypeName }}</td>
           <td (click)="getDetails(dish)"><button type="button" class="btn btn-outline-success" (click)="getDetails(dish)" >{{dictionaryService.dictionary.details}}</button></td>
           <ng-container *ngIf="isAdmin === true">
-          <td><a [routerLink]="['../form']" [queryParams]="{dishId: dish.dishId}"><button type="button" class="btn btn-outline-success">Update</button></a></td>
-          <td><a [routerLink]="['../menu']" [queryParams]="{isAdmin: true}"><button type="button" class="btn btn-outline-danger" (click)="delete(dish.dishId)" >{{dictionaryService.dictionary.delete}}</button></a></td>
+          <td><a [routerLink]="['/form']" [queryParams]="{dishId: dish.dishId}"><button type="button" class="btn btn-outline-success">Update</button></a></td>
+          <td><a [routerLink]="['/menu']"><button type="button" class="btn btn-outline-danger" (click)="delete(dish.dishId)" >{{dictionaryService.dictionary.delete}}</button></a></td>
         </ng-container>
         </tr>
         </tbody>

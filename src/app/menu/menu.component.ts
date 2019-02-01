@@ -34,13 +34,11 @@ export class MenuComponent implements OnInit, OnChanges {
     ngOnInit() {
       this.getDishes();
       this.initDish();
-      this.route.queryParams.subscribe(params => {
-        if (params['isAdmin'] === 'true') {
-          this.isAdmin = true;
-        } else {
-          this.isAdmin = false;
-        }
-      });
+      if(this.userSerive.user.userType.userTypeId === 3){
+        this.isAdmin = true;
+      }else {
+        this.isAdmin = false;
+      }
       this.searchDish = '';
       this.user = this.userSerive.getUser();
     }
@@ -95,7 +93,6 @@ export class MenuComponent implements OnInit, OnChanges {
 
   delete(dish: number) {
     this.httpService.deleteDish(dish).subscribe();
-    window.location.reload();
   }
   addToOrder(dish: Dish, amount: number) {
     this.menuOrderService.addOrderDetails(dish, amount);

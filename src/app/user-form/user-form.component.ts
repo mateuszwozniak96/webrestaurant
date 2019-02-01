@@ -15,7 +15,7 @@ export class UserFormComponent implements OnInit {
   user: User;
   userId: number;
 
-  userTypes = ['', 'Pracownik', 'Uzytkownik zalogowany'];
+  userTypes = ['', 'Pracownik', 'Uzytkownik', 'admin'];
 
   constructor(private httpService: HttpService, private route: ActivatedRoute, private userService: UserService,
     public dictionaryService: DictionaryService) {
@@ -30,8 +30,7 @@ export class UserFormComponent implements OnInit {
     });
   }
   updateUser() {
-    this.httpService.addUser(this.user).subscribe();
-    window.location.reload();
+    this.httpService.updateUser(this.user).subscribe();
   }
 
 }

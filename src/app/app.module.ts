@@ -14,7 +14,6 @@ import { RegisterComponent } from './register/register.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule, FormBuilder, NG_ASYNC_VALIDATORS } from '@angular/forms';
-import { AdminComponent } from './admin/admin.component';
 import { FormDishComponent } from './form-dish/form-dish.component';
 import { UsersComponent } from './users/users.component';
 import { UserFormComponent } from './user-form/user-form.component';
@@ -27,9 +26,6 @@ import { DatePipe } from '@angular/common';
 import { UserService } from './services/user.service';
 import { RegisterSummaryComponent } from './register-summary/register-summary.component';
 import { WheatherService } from './services/wheather.service';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -39,7 +35,6 @@ import {MatButtonModule} from '@angular/material/button';
     ReservationComponent,
     AboutComponent,
     RegisterComponent,
-    AdminComponent,
     FormDishComponent,
     UsersComponent,
     UserFormComponent,
@@ -56,11 +51,7 @@ import {MatButtonModule} from '@angular/material/button';
     HttpClientModule,
     ReactiveFormsModule,
     BsDatepickerModule.forRoot(),
-    TimepickerModule.forRoot(),
-    BrowserAnimationsModule,
-    MatCheckboxModule,
-    MatButtonModule
-
+    TimepickerModule.forRoot()
 
   ],
   providers: [HttpService, MenuOrderService, ReservSummaryReservService, DatePipe, UserService, AppComponent,

@@ -10,7 +10,6 @@ import { NgModule, Component } from '@angular/core';
 import { LoginComponent } from './login/login.component';
 import { RouterModule, Routes, Router } from '@angular/router';
 import { ReservationComponent } from './reservation/reservation.component';
-import { AdminComponent } from './admin/admin.component';
 import { UsersComponent } from './users/users.component';
 import { OrdersComponent } from './orders/orders.component';
 import { ReservationSumamryComponent } from './reservation-sumamry/reservation-sumamry.component';
@@ -27,16 +26,7 @@ const routes: Routes = [
   {path: 'about', component: AboutComponent},
   {path: 'orders', component: OrdersComponent},
   {path: 'register-summary', component: RegisterSummaryComponent},
-  {
-    path: 'admin',
-    component: AdminComponent,
-    children: [
-      {
-      path: 'menu',
-      component: MenuComponent,
-      },
-      {
-      path: 'form',
+  {    path: 'form',
       component: FormDishComponent
       },
       {
@@ -47,14 +37,6 @@ const routes: Routes = [
         path: 'formuser',
         component: UserFormComponent
       },
-      {
-        path: '',
-        redirectTo: 'menu',
-        pathMatch: 'full'
-      }
-    ]
-
-  },
   {
     path: 'register',
     component: RegisterComponent

@@ -28,7 +28,6 @@ export class UsersComponent implements OnInit {
   }
   deleteUser(user: User) {
     this.httpService.deleteUser(user).subscribe();
-    window.location.reload();
   }
 
 }

@@ -42,6 +42,7 @@
         </select>
       </td>
       <td><button type="button" class="btn btn-success" (click)="updateOrder(order)">{{dictionaryService.dictionary.confirm}}</button></td>
+      <td> <input type="image" src="assets/images/deletePosition.png" width="35px" height="35px" (click)="deleteOrder(order.orderId)"></td>
     </ng-container>
     </tr>
     </tbody>

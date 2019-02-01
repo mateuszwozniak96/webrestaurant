@@ -27,13 +27,13 @@
         </select>
       </div>
 
-    <a [routerLink]="['../users']"  [queryParams]="{isAdmin: true}"
-      ><button type="button" class="btn btn-info" (click)="updateUser()">
+    <a [routerLink]="['/users']"
+      ><button type="button" class="btn btn-success" (click)="updateUser()">
         Update
       </button></a
     >
-    <a [routerLink]="['../users']"  [queryParams]="{isAdmin: true}"
-      ><button type="button" class="btn btn-info">
+    <a [routerLink]="['/users']">
+      <button type="button" class="btn btn-success">
         Wroć
       </button></a
     >

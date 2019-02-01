@@ -48,7 +48,6 @@ export class FormDishComponent implements OnInit {
       this.httpService.addDish(this.dish).subscribe(dish => {
         console.log(dish);
       });
-      window.location.reload();
   }
 
   getDish(dishId: number) {

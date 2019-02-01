@@ -23,7 +23,7 @@
 
 
       <ng-container *ngIf="user.userType.userTypeId === 3">
-        <a class="nav-item nav-link" [routerLink]="['/admin'] " [queryParams]="{isAdmin: true}">{{dictionaryService.dictionary.admin}}</a>
+        <a class="nav-item nav-link" [routerLink]="['/users']" >{{dictionaryService.dictionary.users}}</a>
 
       </ng-container>
         <ng-container *ngIf="user.isActive === 1">

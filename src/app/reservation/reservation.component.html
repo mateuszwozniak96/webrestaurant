@@ -60,6 +60,9 @@
                <td>{{reserv.board.boardId}}</td>
                <td>{{reserv.board.boardType}}</td>
                <td>{{reserv.dateTime | date}} {{reserv.dateTime | date: 'shortTime'}}</td>{{myDate | date}}
+               <td *ngIf="userService.user.userType.userTypeName==='admin'">
+                 <input type="image" src="assets/images/deletePosition.png" width="35px" height="35px"
+                   (click)= "deleteReservation(reserv.reservationId)"></td>
               </ng-container>
           </tr>
       </tbody>

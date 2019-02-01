@@ -23,6 +23,7 @@ export class OrderSummaryComponent implements OnInit {
   }
 
   continue() {
+      this.httpService.sentMailOrder(this.order.orderId).subscribe();
     this.menuOrderService.cleanOrderDetails();
   }
 }

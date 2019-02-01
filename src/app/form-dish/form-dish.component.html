@@ -1,7 +1,7 @@
 <div>
   <form>
     <div class="form-group">
-      <label for="dishName">{{dictionaryService.dictionary.firstName}}</label>
+      <label for="dishName">{{dictionaryService.dictionary.dishName}}</label>
     <input type="text" [(ngModel)]="dish.dishName" class="form-control" name="dishName" />
   </div>
   <div class="form-group">
@@ -31,12 +31,12 @@
           <input type="text" [(ngModel)]="dish.dishImage" class="form-control" name="dishImage" />
         </div>
 
-    <a [routerLink]="['../']"  [queryParams]="{isAdmin: true}"
+    <a [routerLink]="['/menu']"
       ><button type="button" class="btn btn-outline-success" (click)="updateDish()">
         Update
       </button></a
     >
-    <a [routerLink]="['../']"  [queryParams]="{isAdmin: true}"
+    <a [routerLink]="['/menu']"
       ><button type="button" class="btn btn-outline-success">
         Wroć
       </button></a

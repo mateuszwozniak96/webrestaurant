@@ -39,6 +39,7 @@ export class OrderComponent implements OnInit {
       });
       console.log(this.orderId);
     });
+
   }
 
 

@@ -53,6 +53,9 @@ deleteDish(dishId: number): Observable<Dish> {
 addUser(user: User): Observable<User> {
   return this.http.post<User>('http://localhost:8080/users', user);
 }
+updateUser(user: User): Observable<User> {
+  return this.http.put<User>('http://localhost:8080/users', user);
+}
 getUsers(): Observable<Array<User>> {
   return this.http.get<Array<User>>(this.url);
 }
@@ -80,6 +83,12 @@ getUserByLogin(login: string): Observable<Array<User>> {
   addOrder(order: OrderTable): Observable<number> {
      return  this.http.post<number>('http://localhost:8080/orders', order);
   }
+  sentMailOrder(orderId: number): Observable<OrderTable> {
+    return this.http.get<OrderTable>('http://localhost:8080//orders/' + orderId + '/sentmail');
+  }
+  deleteOrder(orderId: number): Observable<OrderTable> {
+    return this.http.delete<OrderTable>('http://localhost:8080/orders/' + orderId);
+  }
   addOrderDetail(orderDetail: OrderDetail) {
     return this.http.post('http://localhost:8080/order-details', orderDetail);
   }
@@ -89,6 +98,9 @@ getUserByLogin(login: string): Observable<Array<User>> {
   }
   addReservation(reservation: Reservation): Observable<number> {
     return this.http.post<number>('http://localhost:8080/reservations', reservation);
+  }
+  deleteReservation(reservationId: number): Observable<Reservation> {
+    return this.http.delete<Reservation>('http://localhost:8080/reservations/' + reservationId);
   }
   getDishesByString(s: string): Observable<Array<Dish>> {
     return this.http.get<Array<Dish>>('http://localhost:8080/dishes?string=' + s);
